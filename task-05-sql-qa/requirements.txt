@@ -1,0 +1,16 @@
+# core
+langchain
+langchain-google-genai
+langchain-community
+google-genai
+sqlalchemy
+sqlite3
+sqlparse
+
+# web & utilities
+fastapi
+uvicorn
+python-dotenv
+faker
+streamlit
+requests

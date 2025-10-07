@@ -1,0 +1,5 @@
+List top 5 campaigns by ROI in the last 6 months.
+Which channels drive the most conversions for campaigns with spend > 50000?
+Show customers in Urban region with loyalty_score > 80 sorted by churn_risk desc.
+How many leads were converted per campaign?
+Top 10 campaigns targeting 'social' channel by conversions per rupee spent.
