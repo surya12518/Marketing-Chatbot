@@ -1,0 +1,15 @@
+langchain>=0.3.0
+langchain-google-genai>=0.1.6
+google-generativeai>=0.8.5
+gradio>=5.9.1
+python-dotenv>=1.0.1
+langgraph>=0.2.3
+requests>=2.31.0
+
+streamlit>=1.32.0 # Streamlit for building the web app
+PyPDF2>=3.0.1 # PyPDF2 for PDF file handling
+sentence-transformers>=2.2.2 # Sentence Transformers for embedding generation
+faiss-cpu>=1.7.4 # FAISS for efficient similarity search
+#google-generativeai>=0.6.18 # Google Generative AI for LLM capabilities
+langchain-community>=0.0.148 # LangChain Community for additional utilities 
+streamlit-chat>=0.0.4 # Streamlit Chat for chat interface
