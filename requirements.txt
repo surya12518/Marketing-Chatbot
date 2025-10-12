@@ -1,15 +1,37 @@
+# Core LangChain and Google GenAI dependencies
 langchain>=0.3.0
+langchain-community>=0.0.148
 langchain-google-genai>=0.1.6
 google-generativeai>=0.8.5
-gradio>=5.9.1
-python-dotenv>=1.0.1
 langgraph>=0.2.3
-requests>=2.31.0
+langchain-experimental>=0.0.148
 
-streamlit>=1.32.0 # Streamlit for building the web app
-PyPDF2>=3.0.1 # PyPDF2 for PDF file handling
-sentence-transformers>=2.2.2 # Sentence Transformers for embedding generation
-faiss-cpu>=1.7.4 # FAISS for efficient similarity search
-#google-generativeai>=0.6.18 # Google Generative AI for LLM capabilities
-langchain-community>=0.0.148 # LangChain Community for additional utilities 
-streamlit-chat>=0.0.4 # Streamlit Chat for chat interface
+# Web and App Frameworks
+streamlit>=1.32.0
+streamlit-chat>=0.0.4
+gradio>=5.9.1
+fastapi
+uvicorn
+
+# Utilities & Environment
+python-dotenv>=1.0.1
+requests>=2.31.0
+faker
+
+# NLP / Embeddings / Vector Search
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
+
+# PDF / Document Handling
+PyPDF2>=3.0.1
+
+#Database & SQL Utilities
+sqlalchemy
+sqlparse
+pydantic
+
+# Other
+ddgs # DuckDuckGo Search package
+tiktoken
+bs4
+IPython
