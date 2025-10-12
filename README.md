@@ -25,8 +25,8 @@ The system enables marketers to **chat with their data**, retrieve campaign insi
 
 | Team Member | Tasks Completed | Description |
 |--------------|----------------|--------------|
-| **Surymani** | ✅ Task 1, 3, 4 | Built the **Marketing Chatbot with Memory**, implemented **RAG (Basic)** and **RAG with Conversational Memory & Multi-Query Retrieval** using LangChain and Gemini. |
-| **Dhruve** | ✅ Task 5, 6 | Developed the **SQL QA System** for querying campaign data in natural language and the **Summarization Engine** for condensing marketing reports using Gemini. |
+| **Surymani** | ✅ Task 1, 3, 4, 6, 8 | Built the **Marketing Chatbot with Memory**, implemented **RAG (Basic)** and **RAG with Conversational Memory & Multi-Query Retrieval** using LangChain and Gemini. |
+| **Dhruve** | ✅ Task 5, 2 | Developed the **SQL QA System** for querying campaign data in natural language and the **Summarization Engine** for condensing marketing reports using Gemini. |
 
 ---
 ### 1. Create Project Directory
