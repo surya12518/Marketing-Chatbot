@@ -1,0 +1,275 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "streamlit-input",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -384,
+        -400
+      ],
+      "id": "78dd3087-e69c-4a7f-b5f3-d8aa07c9699f",
+      "name": "Webhook",
+      "webhookId": "9a6bf39b-35b6-4abc-9362-10569eb9e1cd"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=summary:{{ $json.body.summary }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=You are a helpful assistant. \n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -208,
+        -400
+      ],
+      "id": "a50cebc1-24d4-493d-93c8-87240afbf251",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        -208
+      ],
+      "id": "cc880583-5446-4a27-bc4e-8923470089ff",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "3VYDXLxYMWUYIhfV",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "user",
+        "user": {
+          "__rl": true,
+          "value": "U09KFUL2MUL",
+          "mode": "list",
+          "cachedResultName": "notify"
+        },
+        "text": "={{ $json.output.Output }}",
+        "otherOptions": {}
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        272,
+        -384
+      ],
+      "id": "5b416d82-8ddc-4ab3-aa4a-41fd9f1e37a1",
+      "name": "Send a message",
+      "webhookId": "1829725a-2b25-4945-956e-b6985323a1fa",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "08HI0aXXk0dmNUea",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "r4551878@gmail.com",
+        "subject": "Alert notification",
+        "message": "={{ $json.output.summary }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        256,
+        -192
+      ],
+      "id": "55ddce72-32fd-4140-85c8-ca03bea09a90",
+      "name": "Send a message1",
+      "webhookId": "8451b068-347f-4859-962d-4ca1c60c18b8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "Lwn3F137fyCkoHpJ",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1MdEPqXzXW2VOHRKvZ4oOc1srQz4TtSSCTNMo740fWLQ/edit?usp=sharing",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1MdEPqXzXW2VOHRKvZ4oOc1srQz4TtSSCTNMo740fWLQ/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Output": "={{ $json.output.summary }}"
+          },
+          "matchingColumns": [
+            "Output"
+          ],
+          "schema": [
+            {
+              "id": "Input",
+              "displayName": "Input",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Output",
+              "displayName": "Output",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        272,
+        -576
+      ],
+      "id": "b0e8dc44-c47e-4247-b995-412614f09025",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "FjOExa1abjIIfIK1",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        272,
+        -16
+      ],
+      "id": "68f68786-6a1b-4111-9031-1fe5de2d6353",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\"summary\": \"<summary text here>\"}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -48,
+        -224
+      ],
+      "id": "96663b81-b7f7-4a5f-a044-9176289d6258",
+      "name": "Structured Output Parser"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "dabd1c7a-5d80-477f-a266-760ee2904274",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5313ca561d9a35007bacfd76a1d92b91f465fc8a1c0e472596f887b6413c5aaf"
+  },
+  "id": "Mhsjsv0XfGbmhdd5",
+  "tags": []
+}
