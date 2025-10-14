@@ -41,6 +41,9 @@ streamlit run your_filename.py
 ### Access the Interface
 - Open http://localhost:8501 in your browser
 - Start summarizing documents immediately!
+
+<img width="720" height="577" alt="image" src="https://github.com/user-attachments/assets/84758c69-1a83-4b07-9252-d957fe86ac61" />
+
 ```mermaid
 graph TD
     A[User Input] --> B{Document Type}
