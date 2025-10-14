@@ -77,6 +77,10 @@ ngrok config add-authtoken YOUR_AUTH_TOKEN
 ```bash
 ngrok http --url=your-custom-subdomain.ngrok.io 5678
 ```
+<img width="720" height="577" alt="image" src="https://github.com/user-attachments/assets/78a2bc92-21d6-448f-9fb3-674175cc9f45" />
+
+<img width="1048" height="532" alt="image" src="https://github.com/user-attachments/assets/0f2e40f5-b299-4f38-9aaf-597ede053d2c" />
+
 #### 🔧 System Architecture
 ```mermaid
 graph TD
